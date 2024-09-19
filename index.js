@@ -1,40 +1,25 @@
+function rollsDice () {
 
-function calculateTip(){
-  // store the data of the input 
+  var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+  var randomImage1 = "diceImages/dice" + randomNumber1 + ".png";
+  var image1 = document.querySelectorAll("img")[0];
 
-  var billAmount = parseFloat(document.getElementById("billAmount").value);
-  var serviceQuality = parseFloat(document.getElementById("serviceQuality").value);
-  var numPeople = parseFloat(document.getElementById("totalPeople").value);
-// Quick validation
+ var lastImage1 =  image1.setAttribute("src", randomImage1);
 
-if (billAmount === 0 || serviceQuality == 0){
-  alert("Please insert some value");
-  return; //To stop the function from running
-  } 
-// check if the input is less than or equal to 1
-if (isNaN(numPeople)|| numPeople <= 1 ){
-    numPeople = 1;
-    document.getElementById("each").style.display = "none";
-  } else {
-    document.getElementById("each").style.display = "block";
-  }
 
-  // The calculation
-  var total = (billAmount * serviceQuality)/ numPeople;
+  var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+  var radomImage2 = "diceImages/dice" + randomNumber2 + ".png"
+  var image2 = document.querySelectorAll("img")[1];
   
-  // Display the result
+ var lastImage2 =  image2.setAttribute("src", radomImage2);
 
-document.getElementById("totalTip").style.display = "block";
-document.getElementById("tip").innerHTML = total.toFixed(2);
+
+  if (randomNumber1 > randomNumber2) {
+    document.querySelector("h1").innerHTML = "Player 1 wins";
+  } else if (randomNumber1 === randomNumber2) {
+    document.querySelector("h1").innerHTML = "Draw!";
+  } else {
+    document.querySelector("h1").innerHTML = "Player 2 wins";
 }
 
-
-// Hide the tip amount on load 
-
-document.getElementById("totalTip").style.display = "none";
-document.getElementById("each").style.display = "none";
-
-// clicking the button calls our custom function 
-document.getElementById("calculate").onclick = function (){
-calculateTip();
-};
+}
